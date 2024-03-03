@@ -1,0 +1,61 @@
+/* NavBar.css */
+.appBar {
+    background-color: #fff; /* White background */
+    color: #5f6368; /* Gmail text color */
+    box-shadow: none; /* Remove shadow for a flat design */
+  }
+  
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+  }
+  
+  .menuButton {
+    margin-right: 16px;
+  }
+  
+  .title {
+    flex-grow: 1;
+    font-weight: bold;
+  }
+  
+  .search {
+    position: relative;
+    border-radius: 4px;
+    background-color: #f1f3f4;
+    margin-right: 16px;
+    width: 100%;
+  }
+  
+  .searchIcon {
+    padding: 10px;
+    height: 100%;
+    position: absolute;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .inputInput {
+    padding: 8px 8px 8px 40px;
+    width: 100%;
+  }
+  
+  .accountButton {
+    margin-left: 16px;
+  }
+  
+  @media screen and (min-width: 600px) {
+    .search {
+      margin-left: 32px;
+      width: auto;
+    }
+  
+    .inputInput {
+      width: 20ch;
+    }
+  }
+  

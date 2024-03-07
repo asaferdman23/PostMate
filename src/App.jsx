@@ -1,28 +1,33 @@
 // App.jsx
 // import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Home from './pages/Home';
-import NavBar from './cmps/NavBar';
-// import Inbox from './components/Inbox';
+import AboutUs from './pages/AboutUs';
+import EmailIndex from './pages/EmailIndex';
+
+import AppHeader from './cmps/AppHeader';
+import AppFooter from './cmps/AppFooter';
+
+import './assets/css/index.css';
+import './assets/css/cmps/app-header.css';
 // import Sent from './components/Sent';
 // Import other pages/components
 
 function App() {
   return (
     <Router>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 3fr', minHeight: '100vh' }}>
-        <nav>
-          {/* Navigation Links or Icons */}
-          <NavBar />
-        </nav>
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* <Route path="/sent" element={<Sent />} />
-            <Route path="/star" element={<Star />} /> */}
-          </Routes>
+     <section className="main-app">
+        <AppHeader />
+        <main className="container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/email" element={<EmailIndex/>} />
+            </Routes>
         </main>
-      </div>
+          <AppFooter/>  
+        </section>
     </Router>
   );
 }

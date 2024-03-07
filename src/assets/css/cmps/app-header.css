@@ -1,5 +1,5 @@
 .app-header {
-    background: #e91e63;
+    background: #adadad;
     color: white;
 
 }
@@ -7,7 +7,7 @@
 .app-header section.container {
     display: flex;
     align-items: center;
-
+    padding: 10px;
 }
 
 .app-header h1.logo {

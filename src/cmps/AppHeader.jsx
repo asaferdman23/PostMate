@@ -1,79 +1,71 @@
-// Import additional components from MUI
-import { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, InputBase, Menu, MenuItem } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import React, { useState } from 'react';
+import { AppBar, Toolbar, IconButton, Typography, InputBase } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { Link } from 'react-router-dom';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import '../assets/css/cmps/NavBar.css';
+import MenuIcon from '@mui/icons-material/Menu'; // Make sure this line is added
+import EmailFilter from './EmailFilter';
+import GmailIcon from '../assets/images/gmail_icon.png';
+import '../assets/css/index.css';
 
-function AppHeader() {
-  // State to control the anchor of the menu (null is closed)
+function AppHeader({ onDrawerToggle }) {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [searchText, setSearchText] = useState("");
+  
 
-  const handleMenu = (event) => {
+  const handleSearchTextChange = (event) => {
+    setSearchText(event.target.value);
+  };
+
+  const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleProfileMenuClose = () => {
     setAnchorEl(null);
   };
 
   return (
-    <header className='app-header'>
-      <section className='container'>
-    <AppBar position="static" className="appBar">
-      <Toolbar className="toolbar">
+    <AppBar className='app-header' sx={{ boxShadow: 0, backgroundColor:'#F6F8FC' }}>
+      <Toolbar>
         <IconButton
           edge="start"
-          className="menuButton"
-          color="inherit"
-          aria-label="menu"
-          onClick={handleMenu} // Handle opening menu
+          aria-label="open drawer"
+          onClick={onDrawerToggle}
         >
           <MenuIcon />
         </IconButton>
-        <Menu
-          id="menu-appbar"
-          anchorEl={anchorEl}
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-          }}
-          keepMounted
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-          }}
-          open={Boolean(anchorEl)} // Controlled by state
-          onClose={handleClose} // Handle closing menu
-        >
-          {/* Add MenuItems here */}
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
-        </Menu>
-        <Typography variant="h6" className="title">
-          Gmail
-        </Typography>
+        <Link to="/" className="brand">
+          <img src={GmailIcon} alt="Gmail" className="gmail-icon" />
+          <Typography sx={{ color:'#202124'}} variant="h6" className="title">
+            Gmail
+          </Typography>
+        </Link>
         <div className="search">
-          <div className="searchIcon">
-            <SearchIcon />
-          </div>
           <InputBase
-            placeholder="Search…"
+          color='#eaf1fb'
+          sx={{ paddingLeft: '55px'}}
+            placeholder="Search"
+            value={searchText}
+            onChange={handleSearchTextChange}
             classes={{
-              root: "inputRoot",
-              input: "inputInput",
+              root: 'input-root',
+              input: 'input-input',
             }}
             inputProps={{ 'aria-label': 'search' }}
           />
         </div>
-        <IconButton className="accountButton" color="inherit">
+        <IconButton
+          edge="end"
+          aria-label="account of current user"
+          aria-haspopup="true"
+          onClick={handleProfileMenuOpen}
+          color="inherit"
+        >
           <AccountCircle />
         </IconButton>
       </Toolbar>
     </AppBar>
-    </section>
-    </header>
   );
 }
 

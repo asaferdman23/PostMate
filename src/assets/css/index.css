@@ -9,3 +9,7 @@
 
 /* Components */
 @import "./cmps/app-header.css";
+@import "./cmps/list-nav-bar.css";
+@import "./cmps/gmail-icon.css";
+@import "./cmps/email-index.css";
+@import "./cmps/email-filter.css";

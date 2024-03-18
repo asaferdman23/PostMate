@@ -1,13 +1,12 @@
 .app-header {
-    background: #adadad;
-    color: white;
-
-}
-
-.app-header section.container {
-    display: flex;
-    align-items: center;
-    padding: 10px;
+  grid-area: header;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 1em;
+  /* Other styles */
+  width: 100%;
+  z-index: 1100;  
 }
 
 .app-header h1.logo {
@@ -19,10 +18,63 @@
     flex-grow: 1;
 }
 
-.app-header nav a:not(:last-child) {
-    margin-right: 10px;
+.gmail-icon {
+  margin-right: 10px; /* Adjust as needed */
+  width: 40px; /* Adjust as needed */
+}
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit; /* To ensure the link does not have default colors */
+}
+.title {
+  display: inline-block; /* Ensure the title aligns correctly with the icon */
 }
 
-.app-header section.container>section {
-    flex-grow: 1;
+.search {
+  background-color:'#eaf1fb'; 
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Maximum width of the search bar */
+  margin-left: 24px;
+  margin-right: 24px;
 }
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  padding: 12px;
+  pointer-events: none;
+  color: #5f6368;
+}
+
+.input-root {
+  color: inherit;
+  width: 100%;
+}
+
+.input-input {
+  padding: 8px 8px 8px 40px; /* padding-left includes the search icon width */
+  width: 100%;
+  border-radius: 4px; /* Optional: if you want rounded corners */
+  background-color: #f1f3f4; /* Light grey background */
+}
+
+.accountButton {
+  /* Styles for account button */
+}
+  
+  @media screen and (min-width: 600px) {
+    .search {
+      margin-left: 32px;
+      width: auto;
+    }
+  
+    .inputInput {
+      width: 20ch;
+    }
+  }
+  

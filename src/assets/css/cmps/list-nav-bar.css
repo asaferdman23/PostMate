@@ -1,28 +1,29 @@
 .list-nav-bar.expanded {
-      grid-area: nav;
+  grid-area: nav;
+  display: flex;
+      position: absolute;
       flex-direction: column;
       transition: width 0.5s; /* Smooth transition for width change */
       /* Add additional styling here (e.g., background color) */
         background-color:#F6F8FC;
         border-radius: 10px;
-        height: calc(100vh - 8vh);
+        height: 90%;
         /* Add additional styling here */    
 }
-
 .list-nav-bar.collapsed {
-    grid-area: nav;
-    /* Styles for the collapsed nav-bar */
-    background-color:#F6F8FC;
-    overflow: hidden;
-    transition: height 0.3s ease;
-    width: 70px;
-    height: calc(100vh - 8vh);
+  position: absolute;
+  grid-area: nav;
+    display: flex;
+    height: 90%;
+    flex-direction: column;
+    transition: width 0.5s, height 0.3s ease; /* Combine both transitions */
+    background-color: #F6F8FC;
     border-radius: 10px;
+    width: 70px;
+    overflow: hidden;
 }
   
 .list-nav-bar-container{
     grid-area: nav;
     flex-direction: column;
-    gap: 10px;
 }
-

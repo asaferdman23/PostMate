@@ -12,9 +12,13 @@ function EmailIndex() {
   const [error, setError] = useState(null)
   const [filterBy, setFilterBy] = useState(emailService.getDefaultFilter(location.pathname))
   const [isNavBarExpanded, setIsNavBarExpanded] = useState(false);
+  const [isEmailListExpanded,setIsEmailListExpanded] = useState(false);
 
   const toggleNavBar = () => {
+    //can you set an if statement that if isNavBarExapnded is true the isEmailListExpanded is false
+    setIsEmailListExpanded(!isNavBarExpanded); // This will set the opposite state of isNavBarExpanded
     setIsNavBarExpanded(!isNavBarExpanded);
+
   };
 
   const params = useParams()
@@ -45,10 +49,10 @@ function onSetFilter(fieldsToUpdate) {
 }
 
     return (
-      <section className="email-index">
+      <section className={`email-index ${isNavBarExpanded ? "nav-expanded" : ""}`}>
       <AppHeader onDrawerToggle={toggleNavBar} onSetFilter={onSetFilter} />
         <NavBar expanded={isNavBarExpanded} />
-        <EmailList emails={emails} />
+        <EmailList emails={emails} expanded={isEmailListExpanded} />
       </section>
     );
 }

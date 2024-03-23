@@ -18,18 +18,18 @@ import './assets/css/index.css';
 function App() {
   return (
     <Router>
-  <section className="main-app">
-    <main className="container">
-      <Routes>
-        <Route path="/" element={<EmailIndex />} />
-        <Route path="/:mailStatus" element={<EmailIndex />} />
-        <Route path="/about-us" element={<AboutUs />} />
-        {/* Other routes for email categories */}
-      </Routes>
-    </main>
-    <AppFooter />
-  </section>
-</Router>
+      <section className="main-app">
+        <main className="container">
+          <Routes>
+            <Route path="/" element={<EmailIndex />} />
+            <Route path="/:mailStatus" element={<EmailIndex />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            {/* Other routes for email categories */}
+          </Routes>
+        </main>
+        <AppFooter />
+      </section>
+  </Router>
   );
 }
 

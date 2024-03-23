@@ -1,0 +1,30 @@
+.email-preview {
+    display: grid;
+    grid-template-areas: "sender subject subject date";
+    grid-template-columns: 1fr 3fr 3fr min-content;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc; /* To separate email items */
+}
+
+.email-preview .sender {
+    grid-area: sender;
+    font-weight: bold;
+}
+
+.email-preview .subject {
+    grid-area: subject;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+}
+
+.email-preview .date {
+    grid-area: date;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.email-preview:hover {
+    background-color: #eee;
+}

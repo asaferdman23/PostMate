@@ -1,0 +1,16 @@
+.app-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 50px;
+    grid-area: footer;
+    background-color: #333;
+    background-color: #F6F8FC;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.8rem;
+}

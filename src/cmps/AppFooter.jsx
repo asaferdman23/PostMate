@@ -1,8 +1,11 @@
+import "../assets/css/index.css";
+
+// AppFooter.jsx"
 function AppFooter() {
   return (
-    <footer className="footer mt-auto py-3 bg-light">
+    <footer className="app-footer">
       <div className="container">
-        <span className="text-muted">copyRight 2022</span>
+        <span className="text-muted">Asaf Erdman 2024 All Rights Reserved </span>
       </div>
     </footer>
   );

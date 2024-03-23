@@ -2,8 +2,6 @@ import '../assets/css/index.css';
 
 
 function EmailFilter({ filterText, onFilterTextChange, isReadFilter, onIsReadFilter }) {
-  
-  
   return (
       <div className="email-search">
         <input

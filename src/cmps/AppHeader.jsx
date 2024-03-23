@@ -8,7 +8,7 @@ import EmailFilter from './EmailFilter';
 import GmailIcon from '../assets/images/gmail_icon.png';
 import '../assets/css/index.css';
 
-function AppHeader({ onDrawerToggle }) {
+function AppHeader({ onDrawerToggle,onSetFilter }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [searchText, setSearchText] = useState("");
   

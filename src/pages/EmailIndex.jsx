@@ -16,35 +16,39 @@ function EmailIndex() {
   const toggleNavBar = () => {
     setIsNavBarExpanded(!isNavBarExpanded);
   };
-  
+
+  const params = useParams()
   useEffect(() => {
     loadEmails()
   }, [filterBy])
 
-  const params = useParams()
- 
+  useEffect(() => {
+    onSetFilter(emailService.getDefaultFilter())
+}, [params.mailStatus])
+
+function onSetFilter(fieldsToUpdate) {
+    // if (fieldsToUpdate.mail === 'compose') {
+    //     navigate(`${location.pathname}/compose`)
+    // }
+    setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }));
+}
+
   async function loadEmails() {
-    console.log(params.mailStatus, 'params.mailStatus');
-    console.log(filterBy, 'filterBy');
     try {
-        const emails = await emailService.query({ ...filterBy, mail: params.mailStatus })
-        setEmails(emails)
-        setError(null)
+      const emails = await emailService.query({ ...filterBy, mail: params.mailStatus});
+      setEmails(emails);
+      console.log(emails, 'emails');
     } catch (err) {
-      console.log(err, 'err');      
+      console.err(err, 'err');      
         setError(err)
     }
 }
 
-
-
     return (
       <section className="email-index">
-      <AppHeader onDrawerToggle={toggleNavBar} />
-          <NavBar expanded={isNavBarExpanded} />
-          <div className="email-content">
-            <EmailList emails={emails} />
-          </div>
+      <AppHeader onDrawerToggle={toggleNavBar} onSetFilter={onSetFilter} />
+        <NavBar expanded={isNavBarExpanded} />
+        <EmailList emails={emails} />
       </section>
     );
 }

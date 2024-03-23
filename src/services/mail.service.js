@@ -67,6 +67,7 @@ function createEmail(subject = '', body = '', isRead = false, isStarred = false,
 }
 
 function _createEmails() {
+    console.log("_createEmails");
     let emails = utilService.loadFromStorage(STORAGE_KEY)
     if (!emails || !emails.length) {
         emails = [
@@ -183,6 +184,7 @@ function _createEmails() {
         ]
         utilService.saveToStorage(STORAGE_KEY, emails)
     }
+    
 }
 
 function getDefaultFilter(route) {
@@ -197,6 +199,7 @@ function filterEmails(emails, by, status) {
     let filterByStatus
     switch (status) {
         case 'read':
+            console.log(filterByStatus+ " read");
             filterByStatus = emails.filter(email => email.isRead)
             break;
         case 'unread':
@@ -207,6 +210,7 @@ function filterEmails(emails, by, status) {
     }
     switch (by) {
         case 'inbox':
+            console.log(filterByStatus+ " inbox");
             return filterByStatus.filter(email => email.to === loggedinUser.email)
         case 'sent':
             return filterByStatus.filter(email => email.from === loggedinUser.email)

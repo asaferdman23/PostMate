@@ -1,11 +1,13 @@
 import EmailPreview from "./EmailPreview";
+import "../assets/css/index.css"
 
-function EmailList({ emails }) {
+function EmailList({ emails,emailDetails }) {
     return (
-      <ul className="email-list">
+      <ul className="email-content">
         {emails?.map((email) => (
           <EmailPreview key={email.id} 
-          email={email} />
+          email={email} 
+          onOpenMailDetails={emailDetails}/>
         ))}
       </ul>
     );

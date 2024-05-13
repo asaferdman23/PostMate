@@ -1,5 +1,19 @@
 .list-nav-bar-container{
+  display: flex;
   flex-grow: 1;
+  flex-direction: column;
+}
+.compose-button-container{
+  display: flex;
+  margin-bottom: 16px;
+  margin-top: 8px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  align-items: center;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-left: 8px;
+  padding-right: 0px;
 }
 .list-nav-bar.expanded {
   display: flex;

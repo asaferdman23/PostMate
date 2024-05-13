@@ -129,6 +129,17 @@ function _createEmails() {
                 to: 'asfi@gmail.com'
             },
             {
+                id: 'e105',
+                subject: 'Urgent: Payment Reminder',
+                body: 'This is a reminder to settle your outstanding payment by the end of the week.',
+                isRead: false,
+                isStarred: true,
+                sentAt: 1645530000000, // February 21, 2022 12:00:00 UTC
+                removedAt: null,
+                from: 'asfi@gmail.com',
+                to: 'yagshimash@gmail.com'
+            },
+            {
                 id: 'e106',
                 subject: 'Project Update',
                 body: 'Attached is the latest update on the project status.',
@@ -220,6 +231,8 @@ function filterEmails(emails, by, status) {
             return filterByStatus.filter(email => !email.sentAt)
         case 'trash':
             return filterByStatus.filter(email => email.removedAt)
+        default:
+            return filterByStatus
     }
 }
 

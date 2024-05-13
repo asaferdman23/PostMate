@@ -31,9 +31,9 @@ function NavBar({ expanded }) {
   return (
     <section className={navBarClass}>
         <div className='list-nav-bar-container'>
-          <List>
-             {/* Compose button */}
-              <Link to="/compose" style={{ textDecoration: 'none' }}> {/* Adjust the link to your compose path */}
+          <div className='compose-button-container'>
+            {/* Compose button */}
+            <Link to="/compose" style={{ textDecoration: 'none' }}> {/* Adjust the link to your compose path */}
                 <StyledButton
                   className={clsx('list-compose-button', { 'list-compose-button-collapsed': expanded })}
                   variant="contained"
@@ -76,6 +76,9 @@ function NavBar({ expanded }) {
                 {(expanded || isHovered) && "Compose" }
                 </StyledButton>
               </Link>
+            </div>
+          <List>
+             
             {/* Snoozed link */}
             {/* Inbox link */}
             <Link to="/inbox">

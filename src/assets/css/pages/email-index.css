@@ -5,7 +5,7 @@
   /* flex-direction: column; */
 }
 .email-index {
-  padding-top: 60px;
+  padding-top: 45px;
   display: flex;
 }
 .email-index.collapsed {

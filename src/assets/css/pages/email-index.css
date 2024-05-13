@@ -1,18 +1,17 @@
 /* index.css or emailIndex.css */
-
+.email-base-container{
+  display: flex;
+  flex-grow: 1 ;
+  /* flex-direction: column; */
+}
 .email-index {
-    display: grid;
-  grid-template-areas: 
-    "header header header"
-    "nav list list"
-    "nav footer footer";
-  grid-template-columns: minmax(130px, 1fr) 1fr 20fr; /* This defines the width of each column */
-  grid-template-rows: auto 1fr auto; /* This defines the height of each row */
-  height: calc(100vh - var(--header-footer-height)); /* Adjust the var value accordingly */
-  padding-top: 50px; /* Adjust to the height of your AppBar */
-  z-index: 1; /* Lower than AppBar but above default */
+  padding-top: 60px;
+  display: flex;
+}
+.email-index.collapsed {
+  width: 70%;
 }
 /* When the nav is expanded, you need to apply different grid-template-columns */
 .email-index.nav-expanded {
-  grid-template-columns: 170px 1fr; /* nav is 250px when expanded */
+width: 100%;
 }

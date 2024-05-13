@@ -30,7 +30,7 @@ function App() {
             <Route path="/about-us" element={<AboutUs />} />
           </Routes>
         </main>
-        <AppFooter />
+        {/* <AppFooter /> */}
       </section>
   </Router>
   );

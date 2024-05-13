@@ -1,12 +1,12 @@
+.list-nav-bar-container{
+  flex-grow: 1;
+}
 .list-nav-bar.expanded {
-  grid-area: nav;
   display: flex;
-  position: absolute;
-  flex-direction: column;
   transition: width 0.5s;
   background-color:#F6F8FC;
   border-radius: 10px;
-  height: 90%;
+  height: 100%;
 }
 .list-nav-bar.expanded,
 .list-nav-bar.collapsed:hover {
@@ -14,10 +14,8 @@
   color: gray;
 }
 .list-nav-bar.collapsed {
-  position: absolute;
-  grid-area: nav;
     display: flex;
-    height: 90%;
+    height: 100%;
     flex-direction: column;
     transition: width 0.5s, height 0.3s ease;
     background-color: #F6F8FC;
@@ -26,10 +24,7 @@
     overflow: hidden;
 }
   
-.list-nav-bar-container{
-    grid-area: nav;
-    flex-direction: column;
-}
+
 .list-compose-button-collapsed{
     display: none;
 }

@@ -82,11 +82,13 @@ function onSetFilter(fieldsToUpdate) {
     }
 
     return (
-      <section className={`email-index ${isNavBarExpanded ? "nav-expanded" : ""}`}>
-      <AppHeader onDrawerToggle={toggleNavBar} onSetFilter={onSetFilter} />
-        <NavBar expanded={isNavBarExpanded} />
-        <EmailList emails={emails} expanded={isEmailListExpanded} emailDetails={onEmailDetails} />
-        <Outlet />
+      <section className="email-base-container">
+          <AppHeader onDrawerToggle={toggleNavBar} onSetFilter={onSetFilter} />
+        <div className={`email-index ${isNavBarExpanded ? "nav-expanded" : ""}`}>
+          <NavBar expanded={isNavBarExpanded} />
+          <EmailList emails={emails} expanded={isNavBarExpanded} emailDetails={onEmailDetails} />
+          <Outlet />
+        </div>
       </section>
     );
 }

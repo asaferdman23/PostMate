@@ -1,5 +1,5 @@
 .app-header {
-  grid-area: header;
+  
   background-color: #F6F8FC;
   box-shadow: none;
 }
@@ -19,8 +19,8 @@
 .brand-search-container {
     display: flex;
     flex-grow: 1;
-    justify-content: center;  /* Center horizontally */
-    align-items: center;      /* Center vertically */
+    justify-content: center;
+    align-items: center;
 }
 
 .brand {

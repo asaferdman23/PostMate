@@ -2,8 +2,8 @@ import EmailPreview from "./EmailPreview";
 import "../assets/css/index.css"
 
 function EmailList({ emails,expanded,emailDetails}) {
-  const emaiListClass = expanded ? "email-list expanded" : "email-list collapsed";
-  
+  const emaiListClass = expanded ? "email-list collapsed" : "email-list expanded";
+  console.log("from EmailList expanded",expanded);
   return (
       <ul className={emaiListClass}>
         {emails?.map((email) => (

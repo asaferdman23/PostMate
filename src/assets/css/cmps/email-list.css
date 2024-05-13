@@ -5,10 +5,17 @@
     border-top-right-radius: 16px;
     background-color: #ffffff;
     display: flex;
+    flex-grow: 2;
     flex-direction: column;
     padding: 0;
     left: 0;
     grid-area: list; /* This positions the content in the 'content' grid area */
     color: black;
     overflow: auto; /* This sets the overflow to auto, which allows the list to scroll if it is too long */;
+}
+.email-list.expanded {
+    width: 100%;
+}
+.email-list.collapsed {
+    width: 70%;
 }

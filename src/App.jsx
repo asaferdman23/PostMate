@@ -28,7 +28,6 @@ function App() {
                 {/* <Route path={`/:mailStatus/compose`} element={<EmailCompose />} /> */}
             </Route>
             <Route path="/about-us" element={<AboutUs />} />
-            {/* Other routes for email categories */}
           </Routes>
         </main>
         <AppFooter />

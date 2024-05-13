@@ -12,6 +12,7 @@ function EmailIndex() {
   const navigate = useNavigate()
   const location = useLocation()
   const params = useParams()
+  console.log('params =', params);
 
   const [emailDetails, setEmailDetails] = useState(null)
   const [emails, setEmails] = useState(null)
@@ -34,14 +35,13 @@ function EmailIndex() {
     loadEmails()
   }, [filterBy])
 
-  useEffect(() => {
-    onSetFilter(emailService.getDefaultFilter())
-}, [params.mailStatus])
-
 useEffect(() => {
   setEmailDetails(null)
 }, [emails, isToggle])
 
+useEffect(() => {
+  onSetFilter(emailService.getDefaultFilter())
+}, [params.mailStatus])
 
 function onSetFilter(fieldsToUpdate) {
     // if (fieldsToUpdate.mail === 'compose') {
@@ -52,9 +52,9 @@ function onSetFilter(fieldsToUpdate) {
 
   async function loadEmails() {
     try {
-      const emails = await emailService.query({ ...filterBy, mail: params.mailStatus});
-      setEmails(emails);
-      console.log(emails, 'emails');
+      console.log('filterBy =', filterBy)
+      const emails = await emailService.query({ ...filterBy, mail: params?.mailStatus});      setEmails(emails);
+      console.log(JSON.stringify(emails, null, 2), 'emails'); // Stringify the emails before logging
     } catch (err) {
       console.err(err, 'err');      
         setError(err)

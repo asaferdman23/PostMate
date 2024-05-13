@@ -14,6 +14,7 @@ function EmailDetails({ onBackBtnClick }) {
     console.log(params);
 
     useEffect(() => {
+        console.log('useEffect from EmailDetails');
         loadEmail()
     }, [])
 

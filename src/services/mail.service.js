@@ -22,6 +22,7 @@ _createEmails()
 
 async function query(query) {
     let emails = await storageService.query(STORAGE_KEY)
+    console.log("emails = ", emails);
     if (query) {
         let { searchStr, mail, status } = query
         mail = mail || ''
@@ -30,6 +31,7 @@ async function query(query) {
         emails = filterEmails(emails, mail, status)
         emails = emails?.filter(email => email.subject.toLowerCase().includes(searchStr.toLowerCase()))
     }
+    console.log("emails - " , emails);
     return emails
 }
 
@@ -80,7 +82,7 @@ function _createEmails() {
                 sentAt: 1551133930594,
                 removedAt: null,
                 from: 'momo@momo.com',
-                to: 'nathaliepalevich@gmail.com'
+                to: 'asfi@gmail.com'
             },
             {
                 id: 'e102',
@@ -91,7 +93,7 @@ function _createEmails() {
                 sentAt: 1645762800000, // February 24, 2022 12:00:00 UTC
                 removedAt: null,
                 from: 'reports@company.com',
-                to: 'nathaliepalevich@gmail.com'
+                to: 'asfi@gmail.com'
             },
             {
                 id: 'e103',
@@ -102,7 +104,7 @@ function _createEmails() {
                 sentAt: 1645686400000, // February 23, 2022 12:00:00 UTC
                 removedAt: null,
                 from: 'nathaliepalevich@gmail.com',
-                to: 'subscribers@company.com'
+                to: 'asfi@gmail.com'
             },
             {
                 id: 'e104',
@@ -113,7 +115,7 @@ function _createEmails() {
                 sentAt: 1645616400000, // February 22, 2022 12:00:00 UTC
                 removedAt: null,
                 from: 'nathaliepalevich@gmail.com',
-                to: 'applicant@company.com'
+                to: 'asfi@gmail.com'
             },
             {
                 id: 'e105',
@@ -124,7 +126,7 @@ function _createEmails() {
                 sentAt: 1645530000000, // February 21, 2022 12:00:00 UTC
                 removedAt: null,
                 from: 'billing@company.com',
-                to: 'nathaliepalevich@gmail.com'
+                to: 'asfi@gmail.com'
             },
             {
                 id: 'e106',
@@ -135,7 +137,7 @@ function _createEmails() {
                 sentAt: 1645443600000, // February 20, 2022 12:00:00 UTC
                 removedAt: null,
                 from: 'project@company.com',
-                to: 'nathaliepalevich@gmail.com'
+                to: 'asfi@gmail.com'
             },
             {
                 id: 'e107',
@@ -146,7 +148,7 @@ function _createEmails() {
                 sentAt: 1645357200000, // February 19, 2022 12:00:00 UTC
                 removedAt: null,
                 from: 'manager@company.com',
-                to: 'nathaliepalevich@gmail.com'
+                to: 'asfi@gmail.com'
             },
             {
                 id: 'e108',
@@ -157,7 +159,7 @@ function _createEmails() {
                 sentAt: 1645270800000, // February 18, 2022 12:00:00 UTC
                 removedAt: null,
                 from: 'marketing@company.com',
-                to: 'nathaliepalevich@gmail.com'
+                to: 'asfi@gmail.com'
             },
             {
                 id: 'e109',
@@ -168,7 +170,7 @@ function _createEmails() {
                 sentAt: 1645184400000, // February 17, 2022 12:00:00 UTC
                 removedAt: null,
                 from: 'nathaliepalevich@gmail.com',
-                to: 'team@company.com'
+                to: 'asfi@gmail.com'
             },
             {
                 id: 'e110',
@@ -179,7 +181,7 @@ function _createEmails() {
                 sentAt: 1645098000000, // February 16, 2022 12:00:00 UTC
                 removedAt: null,
                 from: 'nathaliepalevich@gmail.com',
-                to: 'employee@company.com'
+                to: 'asfi@gmail.com'
             }
         ]
         utilService.saveToStorage(STORAGE_KEY, emails)
@@ -199,7 +201,6 @@ function filterEmails(emails, by, status) {
     let filterByStatus
     switch (status) {
         case 'read':
-            console.log(filterByStatus+ " read");
             filterByStatus = emails.filter(email => email.isRead)
             break;
         case 'unread':
@@ -210,8 +211,7 @@ function filterEmails(emails, by, status) {
     }
     switch (by) {
         case 'inbox':
-            console.log(filterByStatus+ " inbox");
-            return filterByStatus.filter(email => email.to === loggedinUser.email)
+           return filterByStatus.filter(email => email.to === loggedinUser?.email)
         case 'sent':
             return filterByStatus.filter(email => email.from === loggedinUser.email)
         case 'starred':

@@ -1,19 +1,28 @@
 import { useEffect, useState } from "react";
+import { useNavigate, useParams } from 'react-router';
+import { useLocation, Outlet } from 'react-router-dom'
+
 import EmailList from "../cmps/EmailList";
 import AppHeader from "../cmps/AppHeader";
 import NavBar from "../cmps/NavBar";
 import { emailService } from "../services/mail.service.js";
-import { useParams } from "react-router-dom"  
 import '../assets/css/index.css';
 
 function EmailIndex() {
-  // State to manage filter options (text and isRead)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const params = useParams()
+
+  const [emailDetails, setEmailDetails] = useState(null)
   const [emails, setEmails] = useState(null)
   const [error, setError] = useState(null)
-  const [filterBy, setFilterBy] = useState(emailService.getDefaultFilter(location.pathname))
+  const [isToggle, setIsToggle] = useState(null)
+ 
   const [isNavBarExpanded, setIsNavBarExpanded] = useState(false);
   const [isEmailListExpanded,setIsEmailListExpanded] = useState(false);
 
+  const [filterBy, setFilterBy] = useState(emailService.getDefaultFilter(location.pathname))
+  
   const toggleNavBar = () => {
     //can you set an if statement that if isNavBarExapnded is true the isEmailListExpanded is false
     setIsEmailListExpanded(!isNavBarExpanded); // This will set the opposite state of isNavBarExpanded
@@ -21,7 +30,6 @@ function EmailIndex() {
 
   };
 
-  const params = useParams()
   useEffect(() => {
     loadEmails()
   }, [filterBy])
@@ -29,6 +37,11 @@ function EmailIndex() {
   useEffect(() => {
     onSetFilter(emailService.getDefaultFilter())
 }, [params.mailStatus])
+
+useEffect(() => {
+  setEmailDetails(null)
+}, [emails, isToggle])
+
 
 function onSetFilter(fieldsToUpdate) {
     // if (fieldsToUpdate.mail === 'compose') {
@@ -48,11 +61,32 @@ function onSetFilter(fieldsToUpdate) {
     }
 }
 
+
+
+    function onEmailDetails(email, isToggle, checked) {
+      if (isToggle) {
+          // const selectedEmailsCopy = [...selectedEmails]
+          // const existId = selectedEmails.findIndex(selected => selected.id === email.id)
+          // if (existId > -1) {
+          //     selectedEmailsCopy.splice(selectedEmailsCopy[existId] + 1, 1)
+          // } else {
+          //     selectedEmailsCopy.push(email)
+          // }
+          // setSelectedEmails(selectedEmailsCopy)
+          // setIsToggle(isToggle)
+
+      } else {
+          setEmailDetails(email)
+          navigate(`${location.pathname}/${email.id}`)
+      }
+    }
+
     return (
       <section className={`email-index ${isNavBarExpanded ? "nav-expanded" : ""}`}>
       <AppHeader onDrawerToggle={toggleNavBar} onSetFilter={onSetFilter} />
         <NavBar expanded={isNavBarExpanded} />
-        <EmailList emails={emails} expanded={isEmailListExpanded} />
+        <EmailList emails={emails} expanded={isEmailListExpanded} emailDetails={onEmailDetails} />
+        <Outlet />
       </section>
     );
 }

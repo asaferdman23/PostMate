@@ -1,0 +1,37 @@
+.search {
+    box-sizing: border-box;
+    display: flex;
+    color: #000;
+    align-items: center;
+    background-color:rgb(234, 241, 251);
+    border-radius: 8px;
+    padding: 5px 10px;
+    width: 720px;
+    height: 48px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    border-bottom-style: none ;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-top-right-radius: 24px;
+    border-top-left-radius: 24px;
+    border-top-style: none;
+}
+  
+  .search input {
+    border: none;
+    background-color: transparent;
+    margin-left: 10px;
+    width: 100%;
+    outline: none;
+    font-weight: 400;
+    font-size: 13px; /* Match Gmail's font size */
+    color: rgb(0, 0, 0); /* Gmail's font color */
+  }
+  
+  .search svg {
+    fill: #5f6368; /* Color for the search icon */
+  }
+  

@@ -1,7 +1,7 @@
 import EmailPreview from "./EmailPreview";
 import "../assets/css/index.css"
 
-function EmailList({ emails,expanded,emailDetails }) {
+function EmailList({ emails,expanded,emailDetails}) {
   const emaiListClass = expanded ? "email-list expanded" : "email-list collapsed";
   
   return (
@@ -9,7 +9,8 @@ function EmailList({ emails,expanded,emailDetails }) {
         {emails?.map((email) => (
           <EmailPreview key={email.id} 
           email={email} 
-          onOpenMailDetails={emailDetails}/>
+          onOpenMailDetails={emailDetails}
+          />
         ))}
       </ul>
     );

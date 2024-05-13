@@ -5,6 +5,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import EmailIndex from './pages/EmailIndex';
+import EmailDetails from './pages/EmailDetails';
 
 import AppHeader from './cmps/AppHeader';
 import AppFooter from './cmps/AppFooter';
@@ -22,7 +23,10 @@ function App() {
         <main className="container">
           <Routes>
             <Route path="/" element={<EmailIndex />} />
-            <Route path="/:mailStatus" element={<EmailIndex />} />
+            <Route path="/:mailStatus" element={<EmailIndex />} >
+                <Route path={`/:mailStatus/:emailId`} element={<EmailDetails />} />
+                {/* <Route path={`/:mailStatus/compose`} element={<EmailCompose />} /> */}
+            </Route>
             <Route path="/about-us" element={<AboutUs />} />
             {/* Other routes for email categories */}
           </Routes>

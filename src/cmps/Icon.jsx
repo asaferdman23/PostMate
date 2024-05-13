@@ -1,4 +1,4 @@
-export function Icon({ iconData }) {
+function Icon({ iconData }) {
     return (
         <div className='icon'>
             <img className={`menu-icon icon-hover ${iconData.style}`}
@@ -8,3 +8,4 @@ export function Icon({ iconData }) {
         </div>
     )
 }
+export default Icon;

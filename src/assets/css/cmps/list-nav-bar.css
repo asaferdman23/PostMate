@@ -1,14 +1,17 @@
 .list-nav-bar.expanded {
   grid-area: nav;
   display: flex;
-      position: absolute;
-      flex-direction: column;
-      transition: width 0.5s; /* Smooth transition for width change */
-      /* Add additional styling here (e.g., background color) */
-        background-color:#F6F8FC;
-        border-radius: 10px;
-        height: 90%;
-        /* Add additional styling here */    
+  position: absolute;
+  flex-direction: column;
+  transition: width 0.5s;
+  background-color:#F6F8FC;
+  border-radius: 10px;
+  height: 90%;
+}
+.list-nav-bar.expanded,
+.list-nav-bar.collapsed:hover {
+  width: 250px;
+  color: gray;
 }
 .list-nav-bar.collapsed {
   position: absolute;
@@ -16,7 +19,7 @@
     display: flex;
     height: 90%;
     flex-direction: column;
-    transition: width 0.5s, height 0.3s ease; /* Combine both transitions */
+    transition: width 0.5s, height 0.3s ease;
     background-color: #F6F8FC;
     border-radius: 10px;
     width: 70px;
@@ -26,4 +29,7 @@
 .list-nav-bar-container{
     grid-area: nav;
     flex-direction: column;
+}
+.list-compose-button-collapsed{
+    display: none;
 }

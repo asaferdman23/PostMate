@@ -19,3 +19,7 @@
 .email-list.collapsed {
     width: 70%;
 }
+
+.list-nav-bar.collapsed:hover ~ .email-list.expanded {
+    width: 100%;
+}

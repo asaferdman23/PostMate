@@ -10,14 +10,12 @@ import EmailFilter from './EmailFilter';
 import GmailIcon from '../assets/images/logo_gmail_lockup_default_1x_r5.png';
 import '../assets/css/index.css';
 
-function AppHeader({ onDrawerToggle,onSetFilter }) {
+function AppHeader({ onDrawerToggle,onSetFilter ,emailSearchText, onSearchTextChange}) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [searchText, setSearchText] = useState("");
   
 
-  const handleSearchTextChange = (event) => {
-    setSearchText(event.target.value);
-  };
+  
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -41,7 +39,7 @@ function AppHeader({ onDrawerToggle,onSetFilter }) {
             <img src={GmailIcon} alt="Gmail" className="gmail-icon" />
           </Link>
         <div className="brand-search-container">
-          <SearchBar searchText={searchText} setSearchText={setSearchText} />
+          <SearchBar searchText={emailSearchText} />
         </div>
         <IconButton
           onClick={handleProfileMenuOpen}

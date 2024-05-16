@@ -4,18 +4,14 @@ import InputBase from '@mui/material/InputBase';
 import '../assets/css/index.css';
 
 
-function SearchBar({ searchText, setSearchText }) {
-  const handleSearchTextChange = (event) => {
-    setSearchText(event.target.value);
-  };
-
+function SearchBar({ searchText }) {
   return (
     <div className="search">
       <SearchIcon />
       <InputBase
         placeholder="Search mail"
         value={searchText}
-        onChange={handleSearchTextChange}
+        // onChange={handleSearchTextChange}
         classes={{ root: 'search-input' }} // Apply additional specific styles if needed
       />
     </div>

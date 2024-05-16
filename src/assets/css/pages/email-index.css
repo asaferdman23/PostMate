@@ -9,9 +9,8 @@
   display: flex;
 }
 .email-index.collapsed {
-  width: 70%;
 }
-/* When the nav is expanded, you need to apply different grid-template-columns */
+/* When the nav is expanded, you need to apply different grid-template-columns
 .email-index.nav-expanded {
 width: 100%;
-}
+} */

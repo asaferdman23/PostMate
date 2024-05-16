@@ -18,12 +18,19 @@ function EmailIndex() {
   const [emails, setEmails] = useState(null)
   const [error, setError] = useState(null)
   const [isToggle, setIsToggle] = useState(null)
- 
+  const [search, setSearch] = useState('')
   const [isNavBarExpanded, setIsNavBarExpanded] = useState(false);
   const [isEmailListExpanded,setIsEmailListExpanded] = useState(false);
 
   const [filterBy, setFilterBy] = useState(emailService.getDefaultFilter(location.pathname))
   
+  // please make a funtion that will know what was wrriten on the search bar
+  // and will set the search state to the value that was written
+  // and will call the loadEmails function
+  const onSearchTextChange = (searchText) => {
+    setSearch(searchText)
+  }
+
   const toggleNavBar = () => {
     //can you set an if statement that if isNavBarExapnded is true the isEmailListExpanded is false
     setIsEmailListExpanded(!isNavBarExpanded); // This will set the opposite state of isNavBarExpanded
@@ -31,9 +38,12 @@ function EmailIndex() {
 
   };
 
+
+
   useEffect(() => {
+    onSearchTextChange()
     loadEmails()
-  }, [filterBy])
+  }, [filterBy, search])
 
 useEffect(() => {
   setEmailDetails(null)
@@ -53,7 +63,8 @@ function onSetFilter(fieldsToUpdate) {
   async function loadEmails() {
     try {
       console.log('filterBy =', filterBy)
-      const emails = await emailService.query({ ...filterBy, mail: params?.mailStatus});      setEmails(emails);
+      const emails = await emailService.query({ ...filterBy, mail: params?.mailStatus,searchstr:search ? search : ''});      
+      setEmails(emails);
       console.log(JSON.stringify(emails, null, 2), 'emails'); // Stringify the emails before logging
     } catch (err) {
       console.err(err, 'err');      
@@ -83,7 +94,7 @@ function onSetFilter(fieldsToUpdate) {
 
     return (
       <section className="email-base-container">
-          <AppHeader onDrawerToggle={toggleNavBar} onSetFilter={onSetFilter} />
+          <AppHeader onDrawerToggle={toggleNavBar} onSetFilter={onSetFilter} emailSearchText = {search} />
         <div className={`email-index ${isNavBarExpanded ? "nav-expanded" : ""}`}>
           <NavBar expanded={isNavBarExpanded} />
           <EmailList emails={emails} expanded={isNavBarExpanded} emailDetails={onEmailDetails} />

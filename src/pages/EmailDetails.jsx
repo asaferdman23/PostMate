@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import  Icon from '../cmps/Icon';
 
 import { useNavigate, useParams } from 'react-router';
-import { emailService } from '../services/mail.service.js';
+import { emailServices } from '../services/mail.service.local.js';
 import { Link } from 'react-router-dom';
 
 import "../assets/css/index.css"
@@ -20,7 +20,7 @@ function EmailDetails({ onBackBtnClick }) {
 
     async function loadEmail() {
         try {
-            const email = await emailService.getById(params.emailId)
+            const email = await emailServices.getById(params.emailId)
             setEmail(email)
             // if (!email.isRead) { }//update mail
         } catch (err) {

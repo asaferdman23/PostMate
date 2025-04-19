@@ -1,30 +1,127 @@
 .email-preview {
-    box-sizing: border-box; /* Include padding and borders in the element's total width and height */
-    display: grid;
-    grid-template-areas: "sender subject subject date";
-    grid-template-columns: 1fr 3fr 3fr min-content;
-    gap: 30px;
-    padding: 5px;
-    border-bottom: 1px solid #ccc; /* To separate email items */
-}
-
-.email-preview .sender {
-    grid-area: sender;
-    font-weight: bold;
-}
-
-.email-preview .subject {
-    grid-area: subject;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-}
-
-.email-preview .date {
-    grid-area: date;
-    text-align: right;
-    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #eceff1;
+    cursor: pointer;
+    position: relative;
+    gap: 10px;
+    font-family: "Roboto", sans-serif;
+    color: #202124;
 }
 
 .email-preview:hover {
-    background-color: #eee;
+    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+    z-index: 2;
+}
+
+.email-preview.selected {
+    background-color: #c2dbff;
+}
+
+.email-preview-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 80px;
+}
+
+.email-preview-checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.email-preview-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.email-preview-star {
+    color: #707070;
+    cursor: pointer;
+}
+
+.email-preview-star:hover {
+    color: #202124;
+}
+
+.email-preview-content {
+    display: flex;
+    flex: 1;
+    min-width: 0; /* Allows text truncation to work */
+    gap: 20px;
+}
+
+.email-preview-sender {
+    width: 180px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.email-preview-main {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.email-preview-subject {
+    font-weight: 700;
+}
+
+.email-preview-separator {
+    color: #5f6368;
+    margin: 0 4px;
+}
+
+.email-preview-body {
+    color: #5f6368;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.email-preview-date {
+    width: 100px;
+    text-align: right;
+    color: #5f6368;
+    font-size: 0.85rem;
+}
+
+/* Hover state shows these buttons */
+.email-preview-actions {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    padding: 4px;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+}
+
+.email-preview:hover .email-preview-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.email-preview:hover .email-preview-date {
+    display: none;
+}
+
+.email-preview-actions button {
+    background: none;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.email-preview-actions button:hover {
+    background: #f1f3f4;
 }

@@ -7,16 +7,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import SearchBar from './SearchBar';  
 import EmailFilter from './EmailFilter';
-import GmailIcon from '../assets/images/logo_gmail_lockup_default_1x_r5.png';
+import PostMateIcon from '../assets/images/PostMate_Red_Logo_CleanTransparent.png';
 import '../assets/css/index.css';
 
 function AppHeader({ onDrawerToggle,onSetFilter ,emailSearchText, onSearchTextChange}) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [searchText, setSearchText] = useState("");
   
-
-  
-
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -36,7 +33,7 @@ function AppHeader({ onDrawerToggle,onSetFilter ,emailSearchText, onSearchTextCh
           <MenuIcon />
         </IconButton>
         <Link to="/" className="brand">
-            <img src={GmailIcon} alt="Gmail" className="gmail-icon" />
+            <img src={PostMateIcon} alt="PostMate" className="gmail-icon" style={{ width: '180px', height: '50px' }} />
           </Link>
         <div className="brand-search-container">
           <SearchBar searchText={emailSearchText} />

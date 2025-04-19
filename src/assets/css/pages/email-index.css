@@ -1,12 +1,14 @@
 /* index.css or emailIndex.css */
 .email-base-container{
   display: flex;
-  flex-grow: 1 ;
-  /* flex-direction: column; */
+  flex-direction: column;
+  height: 100vh;
 }
 .email-index {
-  padding-top: 45px;
+  flex-grow: 1;
   display: flex;
+  padding-top: 45px;
+  width: 100vw;
 }
 .email-index.collapsed {
 }

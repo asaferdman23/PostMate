@@ -1,4 +1,6 @@
 .email-list {
+    height: 100%;
+    width: 100%;
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
     border-top-left-radius: 16px;
@@ -11,9 +13,9 @@
     left: 0;
     grid-area: list; /* This positions the content in the 'content' grid area */
     color: black;
-    overflow: auto; /* This sets the overflow to auto, which allows the list to scroll if it is too long */;
 }
 .email-list.expanded {
+    height: 100%;
     width: 100%;
 }
 .email-list.collapsed {

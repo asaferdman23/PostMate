@@ -1,7 +1,7 @@
 {
-  "name": "postmate",
+  "name": "gmail-ui",
   "private": true,
-  "homepage": "https://asaferdman23.github.io/postmate",
+  "homepage": "https://asaferdman23.github.io/gmail-ui/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

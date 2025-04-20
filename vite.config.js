@@ -7,6 +7,11 @@ export default defineConfig({
   base: '/gmail-ui/',
   build: {
     outDir: 'dist',
-    assetsDir: 'assets',
+    sourcemap: true,
   },
+  resolve: {
+    alias: {
+      '@': '/src'
+    }
+  }
 })

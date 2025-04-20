@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "../assets/css/index.css"
 
 function EmailPreview({ email, onOpenMailDetails }) {

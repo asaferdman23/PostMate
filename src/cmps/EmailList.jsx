@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import EmailPreview from "./EmailPreview";
 import "../assets/css/index.css"
 

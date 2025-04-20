@@ -103,23 +103,34 @@ async function uploadFile(file) {
   }
 }
 
-export const query = async (filterBy) => {
+const getDefaultFilter = () => ({
+  mail: 'inbox',
+  searchstr: ''
+});
+
+export const query = async (filterBy = getDefaultFilter()) => {
   try {
-    const emails = await getEmails(); // Get all emails first
+    const emails = await getEmails();
     
-    // Filter by status (mailStatus)
+    if (!emails || !Array.isArray(emails)) {
+      console.warn('No emails returned from getEmails');
+      return [];
+    }
+    
     let filteredEmails = emails;
+    
     if (filterBy.mail) {
       filteredEmails = emails.filter(email => {
-        if (filterBy.mail === 'inbox') return email.status === 'received';
-        if (filterBy.mail === 'sent') return email.status === 'sent';
-        if (filterBy.mail === 'draft') return email.status === 'draft';
-        if (filterBy.mail === 'trash') return email.status === 'trash';
-        return true; // If no status filter, return all emails
+        switch(filterBy.mail) {
+          case 'inbox': return email.status === 'received';
+          case 'sent': return email.status === 'sent';
+          case 'draft': return email.status === 'draft';
+          case 'trash': return email.status === 'trash';
+          default: return true;
+        }
       });
     }
 
-    // Filter by search string (if exists)
     if (filterBy.searchstr) {
       const searchStr = filterBy.searchstr.toLowerCase();
       filteredEmails = filteredEmails.filter(email => 
@@ -133,7 +144,7 @@ export const query = async (filterBy) => {
     return filteredEmails;
   } catch (err) {
     console.error('Error querying emails:', err);
-    throw err;
+    return []; // Return empty array instead of throwing
   }
 };
 
@@ -142,6 +153,7 @@ export const emailService = {
   addEmail,
   updateEmail,
   uploadFile,
-  query
-}
+  query,
+  getDefaultFilter
+};
 

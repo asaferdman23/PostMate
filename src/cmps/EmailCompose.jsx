@@ -51,7 +51,7 @@ function EmailCompose({ onClose }) {
           <button onClick={onClose}>×</button>
         </div>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form className="email-compose-form" onSubmit={handleSubmit}>
         <div className="email-compose-fields">
           <div className="compose-field">
             <input

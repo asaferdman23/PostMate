@@ -9,7 +9,7 @@ import EmailCompose from './cmps/EmailCompose';
 
 function AppRouter() {
     return (
-        <Router basename="/gmail-ui">
+        <Router>
             <Routes>
                 <Route path="/" element={
                     <EmailIndex />

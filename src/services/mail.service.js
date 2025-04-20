@@ -1,25 +1,38 @@
 import { DynamoDBClient, PutItemCommand, ScanCommand } from "@aws-sdk/client-dynamodb";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
-// Configure AWS SDK
-const client = new DynamoDBClient({
-  region: import.meta.env.VITE_AWS_REGION, // Change to your region
-  credentials: {
-    accessKeyId: import.meta.env.VITE_AWS_ACCESS_KEY_ID,
-    secretAccessKey: import.meta.env.VITE_AWS_SECRET_ACCESS_KEY
+// Add error handling for missing credentials
+const getAwsConfig = () => {
+  const region = import.meta.env.VITE_AWS_REGION;
+  const accessKeyId = import.meta.env.VITE_AWS_ACCESS_KEY_ID;
+  const secretAccessKey = import.meta.env.VITE_AWS_SECRET_ACCESS_KEY;
+
+  if (!region || !accessKeyId || !secretAccessKey) {
+    console.error('AWS credentials not found');
+    return null;
   }
-});
 
-const s3Client = new S3Client({
-  region: import.meta.env.VITE_AWS_REGION,
-  credentials: {
-    accessKeyId: import.meta.env.VITE_AWS_ACCESS_KEY_ID,
-    secretAccessKey: import.meta.env.VITE_AWS_SECRET_ACCESS_KEY,
-  },
-});
+  return {
+    region,
+    credentials: {
+      accessKeyId,
+      secretAccessKey
+    }
+  };
+};
 
-// Function to get items from DynamoDB
+// Initialize clients with error handling
+const awsConfig = getAwsConfig();
+const client = awsConfig ? new DynamoDBClient(awsConfig) : null;
+const s3Client = awsConfig ? new S3Client(awsConfig) : null;
+
+// Add error handling to getEmails
 export const getEmails = async () => {
+  if (!client) {
+    console.error('DynamoDB client not initialized');
+    return [];  // Return empty array instead of throwing error
+  }
+
   const params = {
     TableName: 'emails'
   };
@@ -35,8 +48,8 @@ export const getEmails = async () => {
       status: item.status.S,
     }));
   } catch (err) {
-    console.error("Unable to scan the table. Error JSON:", JSON.stringify(err, null, 2));
-    throw err;
+    console.error("Unable to scan the table:", err);
+    return [];  // Return empty array on error
   }
 };
 

@@ -2,12 +2,18 @@ import EmailPreview from "./EmailPreview";
 import "../assets/css/index.css"
 
 function EmailList({ emails, expanded, emailDetails }) {
-  if (!emails) return <div>Loading...</div>
+  if (!emails || emails.length === 0) {
+    return (
+      <div className="email-list empty">
+        <p>No emails to display</p>
+      </div>
+    );
+  }
   
   const emaiListClass = expanded ? "email-list collapsed" : "email-list expanded";
   console.log("emails = ", emails);
   return (
-    <ul className="email-list">
+    <ul className={emaiListClass}>
       {emails.map(email => (
         <EmailPreview
           key={email.emailId}
